@@ -4,20 +4,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.widget.Adapter;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterListener{
 
     private RecyclerView recyclerView;
+    private AdapterListener adapterListener;
+    private RecyclerViewAdapter recyclerViewAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        adapterListener =this;
         initUI();
+        getSupportActionBar().setTitle("Notes");
     }
 
     private void initUI() {
@@ -25,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(staggeredGridLayoutManager);
         List<ItemObject> list = getListItemData();
-        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(this, list);
+        recyclerViewAdapter = new RecyclerViewAdapter(MainActivity.this, list,adapterListener);
         recyclerView.setAdapter(recyclerViewAdapter);
     }
 
@@ -48,5 +54,14 @@ public class MainActivity extends AppCompatActivity {
         listViewItems.add(new ItemObject("The Hitchhiker's Guide to the Galaxy The Hitchhiker's Guide to the GalaxyThe Hitchhiker's Guide to the GalaxyThe Hitchhiker's Guide to the GalaxyThe Hitchhiker's Guide to the GalaxyThe Hitchhiker's Guide to the Galaxy ", "Douglas Adams"));
         listViewItems.add(new ItemObject("The Theory Of Everything", "Dr Stephen Hawking"));
         return listViewItems;
+    }
+
+    @Override
+    public void onLongClick(int position, List<ItemObject> list) {
+        list.remove(position);
+        recyclerView.removeViewAt(position);
+        recyclerViewAdapter.notifyItemRemoved(position);
+        recyclerViewAdapter.notifyItemRangeChanged(position,list.size());
+        Toast.makeText(this, "Remove successfull", Toast.LENGTH_SHORT).show();
     }
 }
