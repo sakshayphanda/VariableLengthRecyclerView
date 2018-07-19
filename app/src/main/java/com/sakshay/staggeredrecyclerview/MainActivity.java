@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         listViewItems.add(new ItemObject("The Hunger Games", "Suzanne Collins"));
         listViewItems.add(new ItemObject("The Hitchhiker's Guide to the Galaxy", "Douglas Adams"));
         listViewItems.add(new ItemObject("The Theory Of Everything", "Dr Stephen Hawking"));
-        listViewItems.add(new ItemObject("The Hitchhiker's Guide to the Galaxy The Hitchhiker's Guide to the GalaxyThe Hitchhiker's Guide to the GalaxyThe Hitchhiker's Guide to the GalaxyThe Hitchhiker's Guide to the GalaxyThe Hitchhiker's Guide to the Galaxy ", "Douglas AdamslistViewItems.add(new ItemObject(\"The Hitchhiker's Guide to the Galaxy The Hitchhiker's Guide to the GalaxyThe Hitchhiker's Guide to the GalaxyThe Hitchhiker's Guide to the GalaxyThe Hitchhiker's Guide to the GalaxyThe Hitchhiker's Guide to the Galaxy \", \"Douglas Adams\"));"));
+        listViewItems.add(new ItemObject("The Hitchhiker's Guide to the Galaxy The Hitchhiker's Guide to the GalaxyThe Hitchhiker's Guide to the GalaxyThe Hitchhiker's Guide to the GalaxyThe Hitchhiker's Guide to the GalaxyThe Hitchhiker's Guide to the Galaxy ", "Douglas Adams"));
         listViewItems.add(new ItemObject("The Theory Of Everything", "Dr Stephen Hawking"));
         return listViewItems;
     }
