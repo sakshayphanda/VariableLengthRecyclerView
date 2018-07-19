@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity{
                 list.remove(position);
             //    recyclerView.removeViewAt(position);
                 recyclerViewAdapter.notifyItemRemoved(position);
-                recyclerViewAdapter.notifyItemRangeChanged(position,list.size());
+         //       recyclerViewAdapter.notifyItemRangeChanged(position,list.size());
                 ///       Toast.makeText(MainActivity.this, "Remove successfull", Toast.LENGTH_SHORT).show();
 
             }
