@@ -14,14 +14,12 @@ import java.util.List;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
 
     private final Context context;
-    private final List<ItemObject> list;
-    private final AdapterListener listener;
+    public static List<ItemObject> list;
     private View view;
 
-    public RecyclerViewAdapter(Context context, List<ItemObject> list, AdapterListener adapterListener) {
+    public RecyclerViewAdapter(Context context, List<ItemObject> list) {
         this.context = context;
         this.list = list;
-        this.listener =adapterListener;
     }
 
     @NonNull
@@ -35,14 +33,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         viewHolder.authorName.setText(list.get(i).getAuthor());
         viewHolder.bookName.setText(list.get(i).getName());
-        viewHolder.card.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-
-               listener.onLongClick(i,list);
-                return true;
-            }
-        });
     }
 
     @Override
